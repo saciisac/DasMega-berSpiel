@@ -19,11 +19,13 @@ function start(){
     blueRightPic= document.getElementById("pbrBild");
     bulletPic= document.getElementById("bulletBild");
     bulletRightPic= document.getElementById("bulletRightBild");
+    sixBulletsPic=document.getElementById("sixBullets");
         
 }
 
   /////UPDATE/////
 function update(){
+    console.log(player[1].reloading);
     //Sudda
     ctx.clearRect(0,0, canvas.width, canvas.height);
         //////////RÄKNA//////////

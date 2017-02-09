@@ -14,6 +14,7 @@ function Player(startX, team) {
     this.vulnerability = "vulnerable";
     this.reloadShield = 0;
     this.ammo=[1,1,1,1,1,1];
+    this.reloading=0;
 
     //METODER
 
@@ -100,7 +101,7 @@ function Player(startX, team) {
             ctx.fillText("RELOADING",this.xPos,this.yPos);
         }
         if(this.reloading > 100){
-            this.ammo.push(1,1,1,1,1,1)
+            this.ammo.push(1,1,1,1,1,1);
             this.reloading=0;
         }
     }
