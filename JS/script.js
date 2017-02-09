@@ -44,6 +44,10 @@ function update(){
     for(i=0; i < player.length; i++){
         player[i].shield();
     }
+    //ladda om
+    for(i=0; i < player.length; i++){
+        player[i].ammoReload();
+    }
     
     //kalla på metoder från klassen Bullet
     for(i=0; i < bullets.length; i++){
