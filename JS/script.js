@@ -5,7 +5,7 @@ var canvas,
 var player= [new Player (850, "pink"), new Player(50, "blue")];
 //deklarera skott
 var bullets= [];
-//TESTTAR OM GITKRAKEN FUNKAR
+//HORAN FUNKAR NOG
 
 ////START//////
 function start(){
