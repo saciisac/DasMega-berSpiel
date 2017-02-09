@@ -1,0 +1,152 @@
+   //stoppa player 1
+    if (player1Y <= 0) {
+        player1Y = 0;
+    }
+    if (player1Y >= 550) {
+        player1Y = 550;
+    }
+    if (player1X <= 0) {
+        player1X = 0;
+    }
+    if (player1X >= 950) {
+        player1X = 950;
+    }
+    //stoppa player 2
+    if (player2Y <= 0) {
+        player1Y = 0;
+    }
+    if (player2Y >= 550) {
+        player2Y = 550;
+    }
+    if (player2X <= 0) {
+        player2X = 0;
+    }
+    if (player2X >= 950) {
+        player2X = 950;
+    }
+    
+    
+      //Gravity player1
+    if(player1VY<100){
+        player1VY= player1VY+1.6;
+    }
+    //Gravity player2
+    if(player2VY<100){
+        player2VY= player2VY+1.6;
+    }
+    //initiera reloadJump1
+    if(doubleJump1.length < 2 &&  player1Y > 200){
+        reloadJump1++; 
+    }
+    //initiera reloadJump2
+    if(doubleJump2.length < 2 &&  player2Y > 200){
+        reloadJump2++; 
+    }
+    //lägg till värde i fältet doublejump1. redloadJump1
+    if(reloadJump1 > 30){
+        doubleJump1.push(1);
+        reloadJump1=0;
+    }
+    //lägg till värde i fältet doublejump2. redloadJump2
+    if(reloadJump2 > 30){
+        doubleJump2.push(1);
+        reloadJump2=0;
+    }
+    console.log(reloadJump2)
+    
+    
+    
+    
+    
+    
+    function keyDown(e) {
+//printa knappar
+ //console.log(e.keyCode);
+    //höger player1
+    if(e.keyCode==39){
+        player1VX=5;
+    }
+    //vänster player1
+    if(e.keyCode==37){
+        player1VX=-5;
+    }
+    //hopp player 1, hopphastighet
+    if(e.keyCode==38 && doubleJump1.length > 0){
+        doubleJump1.pop();
+        //console.log(doubleJump1);
+        player1VY=-25;
+        reloadJump1=0;
+    }
+    //höger player2
+    if(e.keyCode==68){
+        player2VX=5;
+    }
+    //vänster player2
+    if(e.keyCode==65){
+        player2VX=-5;
+    }
+    //hopp player 2, hopphastighet
+    if(e.keyCode==87 && doubleJump2.length > 0){
+        doubleJump2.pop();
+        console.log(doubleJump2);
+        player2VY=-25;
+        reloadJump2=0;
+    }
+   
+    
+}
+function keyUp(f){
+    //sluta gå höger player 1
+    if(f.keyCode==39){
+        player1VX=0;
+    }
+    //sluta gå vänster player 1
+    if(f.keyCode==37){
+        player1VX=0;
+    }
+    //sluta gå höger player 2
+    if(f.keyCode==68){
+        player2VX=0;
+    }
+    //sluta gå vänster player 2
+    if(f.keyCode==65){
+        player2VX=0;
+    }
+   
+  
+}
+    
+    
+    
+    
+    
+    
+    
+    NYTTTTTTTTT
+    //initiera reloadJump 
+    if(Player[0].doubleJump.length < 2 &&  Player[0].yPos > 200){
+        reloadJump0++;
+    }
+       console.log(reloadJump0);
+    //lägg till värde i fältet doublejump1. redloadJump1
+    if(reloadJump1 > 30){
+        doubleJump1.push(1);
+        reloadJump1=0;
+        
+        
+        
+        
+        
+        if(Player[0].Vx>0){
+        Player[0].facing= "right";
+    }
+    if(Player[0].Vx<0){
+        Player[0].facing= "left";
+    }
+    //player 1
+    if(Player[1].Vx>0){
+        Player[1].facing= "right";
+    }
+    if(Player[1].Vx<0){
+        Player[1].facing= "left";
+    }
