@@ -27,6 +27,10 @@ function start(){
     oneBulletsPic=document.getElementById("oneBullets");
     zeroBulletsPic=document.getElementById("zeroBullets");
     arrowUpPic=document.getElementById("arrowUp");
+    victoryBluePic=document.getElementById("victoryBlue");
+    victoryPinkPic=document.getElementById("victoryPink");
+    blueHeartPic=document.getElementById("blueHeart");
+    pinkHeartPic=document.getElementById("pinkHeart");
         
 }
 
@@ -92,11 +96,11 @@ function update(){
         bullets[i].render();
     }
     //hitta hitboxes
-    /*
+
     ctx.fillStyle= "rgba(255,255,0,0.7)";
     ctx.fillRect(player[0].xPos+ 90, player[0].yPos + 10, 45, 60);
     ctx.fillRect(player[1].xPos+ 90, player[1].yPos + 10, 45, 60);
-    */
+    
 }
 
 function keyDown(e){
