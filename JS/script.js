@@ -20,12 +20,19 @@ function start(){
     bulletPic= document.getElementById("bulletBild");
     bulletRightPic= document.getElementById("bulletRightBild");
     sixBulletsPic=document.getElementById("sixBullets");
+    fiveBulletsPic=document.getElementById("fiveBullets");
+    fourBulletsPic=document.getElementById("fourBullets");
+    threeBulletsPic=document.getElementById("threeBullets");
+    twoBulletsPic=document.getElementById("twoBullets");
+    oneBulletsPic=document.getElementById("oneBullets");
+    zeroBulletsPic=document.getElementById("zeroBullets");
+    arrowUpPic=document.getElementById("arrowUp");
         
 }
 
   /////UPDATE/////
 function update(){
-    console.log(player[1].reloading);
+    
     //Sudda
     ctx.clearRect(0,0, canvas.width, canvas.height);
         //////////RÄKNA//////////
