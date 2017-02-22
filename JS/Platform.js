@@ -16,8 +16,8 @@ function Platform(startX, startY){
     this.solidGround= function(){
         for(i=0; i<player.length; i++){
             
-            if(player[i].yPos >= this.yPos && player[i].yPos <= this.yPos + this.height && player[i].Vy>=0){
-                player[i].yPos= this.yPos;
+            if(player[i].yPos >= this.yPos -80 && player[i].yPos <= 350 && player[i].Vy>=0){
+                player[i].yPos= this.yPos-80;
                 player[i].Vy=0;
             }
         }
