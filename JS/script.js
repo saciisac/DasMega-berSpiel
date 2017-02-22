@@ -5,6 +5,8 @@ var canvas,
 var player= [new Player (850, "pink"), new Player(50, "blue")];
 //deklarera skott
 var bullets= [];
+//deklarera platformer
+var platforms= [new Platform(500,400)];
 
 
 ////START//////
@@ -84,6 +86,10 @@ function update(){
             player[1].hurt();
         }
     }
+    //kalla  på metoder från Platform
+    for(i=0; i < platforms.length; i++){
+        platforms[i].solidGround();
+    }
     
         
         
@@ -96,6 +102,10 @@ function update(){
     for(i=0; i < bullets.length; i++){
         bullets[i].render();
     }
+    for(i=0; i < platforms.length; i++){
+        platforms[i].render();
+    }
+    
     //hitta hitboxes
 /*
     ctx.fillStyle= "rgba(255,255,0,0.7)";
