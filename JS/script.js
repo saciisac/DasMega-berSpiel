@@ -31,6 +31,8 @@ function start(){
     victoryPinkPic=document.getElementById("victoryPink");
     blueHeartPic=document.getElementById("blueHeart");
     pinkHeartPic=document.getElementById("pinkHeart");
+    pinkShieldPic=document.getElementById("pinkShield");
+    blueShieldPic=document.getElementById("blueShield");
         
 }
 
@@ -83,7 +85,6 @@ function update(){
         }
     }
     
-    
         
         
         //////////MÅLA//////////
@@ -96,10 +97,11 @@ function update(){
         bullets[i].render();
     }
     //hitta hitboxes
-
+/*
     ctx.fillStyle= "rgba(255,255,0,0.7)";
     ctx.fillRect(player[0].xPos+ 90, player[0].yPos + 10, 45, 60);
     ctx.fillRect(player[1].xPos+ 90, player[1].yPos + 10, 45, 60);
+    */
     
 }
 
@@ -118,13 +120,13 @@ function keyDown(e){
         player[0].doubleJump.shift();
     }
     //skott player 0 åt höger
-    if(e.keyCode==13 &&  player[0].facing == "right" && player[0].ammo.length >0){
+    if(e.keyCode==13 &&  player[0].facing == "right" && player[0].ammo.length >0 && player[0].hp>0 ){
         bullets.push(new Bullet(player[0].xPos + 133, player[0].yPos +49, 30));
         player[0].ammo.shift();
         
     }
     //skott player 0 åt vänster
-    if(e.keyCode==13 &&  player[0].facing == "left" && player[0].ammo.length >0){
+    if(e.keyCode==13 &&  player[0].facing == "left" && player[0].ammo.length >0 && player[0].hp>0){
         bullets.push(new Bullet(player[0].xPos + 80, player[0].yPos +49, -30));
         player[0].ammo.shift();
     }
@@ -144,12 +146,12 @@ function keyDown(e){
         player[1].doubleJump.shift();
     }
     //skott player 1 åt höger
-    if(e.keyCode==32 &&  player[1].facing == "right" && player[1].ammo.length >0){
+    if(e.keyCode==32 &&  player[1].facing == "right" && player[1].ammo.length >0 && player[1].hp>0){
         bullets.push(new Bullet(player[1].xPos + 133, player[1].yPos +49, 30));
         player[1].ammo.shift();
     }
     //skott player 1 åt vänster
-    if(e.keyCode==32 &&  player[1].facing == "left" && player[1].ammo.length >0){
+    if(e.keyCode==32 &&  player[1].facing == "left" && player[1].ammo.length >0 && player[1].hp>0){
         bullets.push(new Bullet(player[1].xPos + 80, player[1].yPos +49, -30));
         player[1].ammo.shift();
     

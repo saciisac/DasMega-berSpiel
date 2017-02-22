@@ -6,7 +6,7 @@ function Player(startX, team) {
     this.Vy = 0;
     this.xPos = startX;
     this.yPos = 550;
-    this.hp = 3;
+    this.hp = 4;
     this.doubleJump = [1, 1];
     this.reloadJump = 0;
     this.facing = "left";
@@ -20,52 +20,118 @@ function Player(startX, team) {
 
     //måla ut player
     this.render = function () {
-            //ctx.fillRect(this.xPos, this.yPos, this.width, this.height);
-            //Pink Player
-            if (this.team == "pink" && this.facing == "left") {
-                ctx.drawImage(pinkLeftPic, this.xPos, this.yPos, 170, 80);
-            }
-            if (this.team == "pink" && this.facing == "right") {
-                ctx.drawImage(pinkRightPic, this.xPos + 10, this.yPos, 170, 80);
-            }
-            //Blue Player
-            if (this.team == "blue" && this.facing == "left") {
-                ctx.drawImage(blueLeftPic, this.xPos, this.yPos, 170, 80);
-            }
-            if (this.team == "blue" && this.facing == "right") {
-                ctx.drawImage(blueRightPic, this.xPos + 10, this.yPos, 170, 80);
-            }
+
             //Hur många skott kvar
-            if (this.ammo.length == 6) {
+            if (this.ammo.length == 6  && this.hp>0) {
                 ctx.drawImage(sixBulletsPic, this.xPos + 90, this.yPos - 20, 30, 30);
             }
-            if (this.ammo.length == 5) {
+            if (this.ammo.length == 5 && this.hp>0) {
                 ctx.drawImage(fiveBulletsPic, this.xPos + 90, this.yPos - 20, 30, 30);
             }
-            if (this.ammo.length == 4) {
+            if (this.ammo.length == 4 && this.hp>0) {
                 ctx.drawImage(fourBulletsPic, this.xPos + 90, this.yPos - 20, 30, 30);
             }
-            if (this.ammo.length == 3) {
+            if (this.ammo.length == 3 && this.hp>0) {
                 ctx.drawImage(threeBulletsPic, this.xPos + 90, this.yPos - 20, 30, 30);
             }
-            if (this.ammo.length == 2) {
+            if (this.ammo.length == 2 && this.hp>0) {
                 ctx.drawImage(twoBulletsPic, this.xPos + 90, this.yPos - 20, 30, 30);
             }
-            if (this.ammo.length == 1) {
+            if (this.ammo.length == 1 && this.hp>0) {
                 ctx.drawImage(oneBulletsPic, this.xPos + 90, this.yPos - 20, 30, 30);
             }
-            if (this.ammo.length == 0) {
+            if (this.ammo.length == 0 && this.hp>0) {
                 ctx.drawImage(zeroBulletsPic, this.xPos + 90, this.yPos - 20, 30, 30);
             }
-            //Double jump 
-            if(this.doubleJump.length==2){
-                ctx.drawImage(arrowUpPic,this.xPos+120,this.yPos, 15,15);
-                ctx.drawImage(arrowUpPic,this.xPos+140,this.yPos, 15,15);
-            }
-        if(this.doubleJump.length==1){
-                ctx.drawImage(arrowUpPic,this.xPos+120,this.yPos, 15,15);
-            }
             
+
+            //Double jump 
+            if (this.doubleJump.length == 2 && this.hp>0) {
+                ctx.drawImage(arrowUpPic, this.xPos + 120, this.yPos, 15, 15);
+                ctx.drawImage(arrowUpPic, this.xPos + 140, this.yPos, 15, 15);
+            }
+            if (this.doubleJump.length == 1 && this.hp>0) {
+                ctx.drawImage(arrowUpPic, this.xPos + 120, this.yPos, 15, 15);
+            }
+            //liv pink
+            if (this.team == "pink") {
+                if (this.hp == 4) {
+                    ctx.drawImage(pinkHeartPic, 750, 30, 50, 50);
+                    ctx.drawImage(pinkHeartPic, 800, 30, 50, 50);
+                    ctx.drawImage(pinkHeartPic, 850, 30, 50, 50);
+                    ctx.drawImage(pinkHeartPic, 900, 30, 50, 50);
+
+                }
+                if (this.hp == 3) {
+                    ctx.drawImage(pinkHeartPic, 750, 30, 50, 50);
+                    ctx.drawImage(pinkHeartPic, 800, 30, 50, 50);
+                    ctx.drawImage(pinkHeartPic, 850, 30, 50, 50);
+                }
+                if (this.hp == 2) {
+                    ctx.drawImage(pinkHeartPic, 750, 30, 50, 50);
+                    ctx.drawImage(pinkHeartPic, 800, 30, 50, 50);
+                }
+                if (this.hp == 1) {
+                    ctx.drawImage(pinkHeartPic, 750, 30, 50, 50);
+                }
+                if (this.hp <= 0) {
+                    ctx.drawImage(victoryBluePic, 10, 20);
+                }
+
+            }
+            //liv blue
+            if (this.team == "blue") {
+                if (this.hp == 4) {
+                    ctx.drawImage(blueHeartPic, 50, 30, 50, 50);
+                    ctx.drawImage(blueHeartPic, 100, 30, 50, 50);
+                    ctx.drawImage(blueHeartPic, 150, 30, 50, 50);
+                    ctx.drawImage(blueHeartPic, 200, 30, 50, 50);
+
+                }
+                if (this.hp == 3) {
+                    ctx.drawImage(blueHeartPic, 50, 30, 50, 50);
+                    ctx.drawImage(blueHeartPic, 100, 30, 50, 50);
+                    ctx.drawImage(blueHeartPic, 150, 30, 50, 50);
+                }
+                if (this.hp == 2) {
+                    ctx.drawImage(blueHeartPic, 50, 30, 50, 50);
+                    ctx.drawImage(blueHeartPic, 100, 30, 50, 50);
+                }
+                if (this.hp == 1) {
+                    ctx.drawImage(blueHeartPic, 50, 30, 50, 50);
+                }
+                if (this.hp <= 0) {
+                    ctx.drawImage(victoryPinkPic, 10, 20);
+                }
+
+            }
+            //Pink Player
+            if (this.team == "pink" && this.facing == "left" && this.hp>0) {
+                ctx.drawImage(pinkLeftPic, this.xPos, this.yPos, 170, 80);
+            
+            }
+            if (this.team == "pink" && this.facing == "right" && this.hp>0) {
+                ctx.drawImage(pinkRightPic, this.xPos + 10, this.yPos, 170, 80);
+                
+            }
+
+            //Blue Player
+            if (this.team == "blue" && this.facing == "left" && this.hp>0) {
+                ctx.drawImage(blueLeftPic, this.xPos, this.yPos, 170, 80);
+            }
+            if (this.team == "blue" && this.facing == "right" && this.hp>0) {
+                ctx.drawImage(blueRightPic, this.xPos + 10, this.yPos, 170, 80);
+            }
+        
+            //sköld pink
+        if(this.team== "pink" && this.vulnerability== "immortal" && this.hp>0){
+            ctx.drawImage(pinkShieldPic, this.xPos +75 , this.yPos+10, 60, 60)
+        }
+        //sköld blue
+        if(this.team== "blue" && this.vulnerability== "immortal" && this.hp>0){
+            ctx.drawImage(blueShieldPic, this.xPos +75 , this.yPos+10, 60, 60)
+        }
+
         }
         //updatera positioner
     this.updatePosition = function () {
@@ -112,10 +178,7 @@ function Player(startX, team) {
                 this.hp--;
                 this.vulnerability = "immortal";
             }
-            if (this.hp < 1) {
-                console.log("Player" + this.team + "Dead");
-            }
-            console.log(this.hp + this.team)
+
         }
         //skydda player
     this.shield = function () {
