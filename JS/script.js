@@ -86,7 +86,9 @@ function update(){
             player[1].hurt();
         }
     }
-    //kalla  på metoder från Platform
+   
+    
+    //kalla på metoder från PLatform
     for(i=0; i < platforms.length; i++){
         platforms[i].solidGround();
     }
