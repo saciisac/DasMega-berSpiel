@@ -6,7 +6,7 @@ var player= [new Player (850, "pink"), new Player(50, "blue")];
 //deklarera skott
 var bullets= [];
 //deklarera platformer
-var platforms= [new Platform(500,400)];
+var platforms= [new Platform(500,400, 200)];
 
 
 ////START//////
