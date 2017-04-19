@@ -6,14 +6,16 @@ var player= [new Player (850, "pink"), new Player(50, "blue")];
 //deklarera skott
 var bullets= [];
 //deklarera platformer
-var platforms= [new Platform(500,400, 200)];
+var platforms= [new Platform(0, 350, 200,0), new Platform(800,350, 200,0), new Platform(400, 500, 200, 0), new Platform(400,200, 400,2)];
+var startScreen= 0
 
 
 ////START//////
 function start(){
      canvas= document.getElementById("c");
      ctx= canvas.getContext("2d");
-    window.setInterval(update, 20);
+     window.setInterval(update, 20);
+    
     //bilder
     pinkLeftPic= document.getElementById("pplBild");
     pinkRightPic= document.getElementById("pprBild");
@@ -35,6 +37,9 @@ function start(){
     pinkHeartPic=document.getElementById("pinkHeart");
     pinkShieldPic=document.getElementById("pinkShield");
     blueShieldPic=document.getElementById("blueShield");
+    bluePlatformPic=document.getElementById("bluePlatform");
+    startScreenPic= document.getElementById("startScreen");
+    
         
 }
 
@@ -43,29 +48,18 @@ function update(){
     
     //Sudda
     ctx.clearRect(0,0, canvas.width, canvas.height);
+    
         //////////RÄKNA//////////
     //kalla på metoder från klassen Player
-        //uppdatera positionen
+        
     for(i=0; i < player.length; i++){
         player[i].updatePosition();
-    }
-    //Stoppa från kanter
-    for(i=0; i < player.length; i++){
         player[i].stopPlayer();
-    }
-    //Hopp, räkning
-    for(i=0; i < player.length; i++){
         player[i].jumpCounting();
-    }
-    //hindra instakill
-    for(i=0; i < player.length; i++){
         player[i].shield();
-    }
-    //ladda om
-    for(i=0; i < player.length; i++){
         player[i].ammoReload();
     }
-    
+   
     //kalla på metoder från klassen Bullet
     for(i=0; i < bullets.length; i++){
         bullets[i].updatePosition();
@@ -104,9 +98,16 @@ function update(){
     for(i=0; i < bullets.length; i++){
         bullets[i].render();
     }
+    //måla ut platformer
     for(i=0; i < platforms.length; i++){
         platforms[i].render();
     }
+    //startskärm
+    if(startScreen==0){
+        ctx.fillRect(0,0,1000,600);
+        ctx.drawImage(startScreenPic,0,0);
+    }
+    
     
     //hitta hitboxes
 /*
@@ -118,6 +119,7 @@ function update(){
 }
 
 function keyDown(e){
+    
     //vänster player 0
     if(e.keyCode== 37){
         player[0].Vx= -10;
@@ -167,6 +169,16 @@ function keyDown(e){
         bullets.push(new Bullet(player[1].xPos + 80, player[1].yPos +49, -30));
         player[1].ammo.shift();
     
+    }
+    //Restart
+    if(e.keyCode== 8){
+        
+        player= [new Player (850, "pink"), new Player(50, "blue")];
+        platforms= [new Platform(0, 350, 200,0), new Platform(800,350, 200,0), new Platform(400, 500, 200, 0), new Platform(400,200, 400,2)];
+        bullets= [];
+        startScreen=1;
+        
+        
     }
 }
 function keyUp(f){
